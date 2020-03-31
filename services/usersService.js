@@ -15,9 +15,27 @@ const usersService = () => {
       }
     );
   };
-
+  const insertNewUser = async function (newUser){
+    await dbConnect();
+    try{
+      var request = await new sql.Request();
+      request.input("FirstName", sql.NVarChar, newUser.firstName),
+      request.input("LastName", sql.NVarChar, newUser.lastName),
+      request.input("Age", sql.Int, newUser.age),
+      request.input("Address", sql.NVarChar, newUser.address),
+      request.input("WorkPlace", sql.NVarChar, newUser.workPlace),
+      request.input("UserName", sql.NVarChar, newUser.userName),
+      request.input("Password",sql.NVarChar, newUser.password);
+      console.log(newUser);
+      return (await request.execute("InsertNewUser"));
+    } catch (err){
+      console.log(err);
+    }
+  }
+      
   return {
-    getAllUsers
+    getAllUsers,
+    insertNewUser
   };
 };
 

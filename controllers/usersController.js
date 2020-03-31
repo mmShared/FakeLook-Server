@@ -1,4 +1,5 @@
-const usersService = require('../services/usersService')
+const usersService = require('../services/usersService');
+const User = require('../models/user');
 
 const usersController = () => {
 
@@ -14,8 +15,26 @@ const usersController = () => {
         }
     }
 
+    const insertNewUser = async (req, res) =>{
+        try {
+            User.firstName = req.body.FirstName;
+            User.lastName = req.body.LastName;
+            User.age = req.body.Age;
+            User.address = req.body.Address;
+            User.workPlace = req.body.WorkPlace;
+            User.userName = req.body.UserName;
+            User.password = req.body.Password;
+            await usersService.insertNewUser(User);
+        } catch(err){
+            console.log(err);
+            res.status(500);
+            res.send(err.message);
+        }
+    }
+
     return {
-        getAllUsers
+        getAllUsers,
+        insertNewUser
     };
 }
 

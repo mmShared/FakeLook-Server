@@ -50,7 +50,6 @@ const postsController = () => {
             Post.photo = req.body.Photo;
             Post.publishDate = req.body.PublishDate;
             Post.postTags = req.body.Tags;
-            console.log(Post.postTags);
             await postsService.insertPost(Post);
             res.send('succeded');
         }

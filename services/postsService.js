@@ -40,8 +40,7 @@ const postsService = () => {
       request.input("Date", sql.Date, newPostSend.publishDate),
       request.input("UserId", sql.Int, 3),
       request.input("TagsJson",sql.NVarChar, newPostSend.postTags);
-    console.log("ff");
-    return await request.execute("InsertPost");
+    return (await request.execute("InsertPost"));
   };
 
   var getAllPostsByDateTime = async (df,dt) =>{
