@@ -16,7 +16,7 @@ const likesController = () => {
     const insertLikePost = async (req ,res) => {
         console.log(req.body.PostId);
         try{
-            await likesService.insertLikePost(req.body.PostId , (data) => {
+            await likesService.insertLikePost(req.body.PostId,req.body.UserId , (data) => {
                 res.json(data);
             });
         }

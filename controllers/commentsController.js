@@ -16,7 +16,10 @@ const commentsController = () => {
 
     const insertCommentPost = async (req, res) => {
         try{
-            await commentsService.insertCommentPost(req.body.Text, req.body.PostId, (data) =>{
+            await commentsService.insertCommentPost(
+                req.body.Text,
+                req.body.PostId,
+                req.body.UserId, (data) =>{
                 res.json(data);
             })
         } catch(err){

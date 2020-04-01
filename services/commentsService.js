@@ -14,12 +14,12 @@ const commentsService = () => {
         }
       });
   };
-  const insertCommentPost = async (Text, postId)=> {
+  const insertCommentPost = async (Text, PostId,UserId)=> {
     await dbConnect();
     var request = new sql.Request();
     request.input("Text", sql.NVarChar, Text);
-    request.input("PostId", sql.Int, postId);
-    request.input("UserId",sql.Int, 2);
+    request.input("PostId", sql.Int, PostId);
+    request.input("UserId",sql.Int,UserId);
     return await request.execute("InsertCommentPost");
   }
 

@@ -13,17 +13,15 @@ const likesService = () => {
                         console.log(err)
                     }
                     else {
-                        //console.log(data.recordset);
                         callback(data.recordset);
-
                     }
                 });
     }
-    const insertLikePost = async function(id,callback){
+    const insertLikePost = async function(Postid,UserId,callback){
         await dbConnect();
         const result = new sql.Request()
-        .input("PostId",sql.Int,id)
-        .input("UserId",sql.Int,4); 
+        .input("PostId",sql.Int,Postid)
+        .input("UserId",sql.Int,UserId); 
         await result.execute("InsertLikePost");
         callback(result.recordset);
     }

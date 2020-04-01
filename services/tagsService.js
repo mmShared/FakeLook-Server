@@ -10,7 +10,6 @@ const tagsService = () => {
         if (err) {
           console.log(err);
         } else {
-        //console.log(data.recordset);
           callback(data.recordset);
         }
       });

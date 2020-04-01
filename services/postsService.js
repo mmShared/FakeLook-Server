@@ -38,7 +38,7 @@ const postsService = () => {
       request.input("Latitude", sql.Float, newPostSend.locationY),
       request.input("Text", sql.Text, newPostSend.text),
       request.input("Date", sql.Date, newPostSend.publishDate),
-      request.input("UserId", sql.Int, 3),
+      request.input("UserId", sql.Int, newPostSend.id),
       request.input("TagsJson",sql.NVarChar, newPostSend.postTags);
     return (await request.execute("InsertPost"));
   };

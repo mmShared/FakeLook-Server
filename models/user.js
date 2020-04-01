@@ -1,4 +1,5 @@
 const User = {
+    id: null,
     firstName: null,
     lastName: null,
     age: null,
